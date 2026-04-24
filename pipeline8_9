@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo "Building project..."
+            }
+        }
+
+        stage('Addition') {
+            steps {
+                script {
+                    int x = 5
+                    int y = 7
+                    echo "Sum = ${x + y}"
+                }
+            }
+        }
+
+        stage('Test') {
+            steps {
+                error 'Addition test failed'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo "Deploying application..."
+            }
+        }
+    }
+}
